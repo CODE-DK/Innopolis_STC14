@@ -1,0 +1,6 @@
+
+Osquid:S1133"5Do not forget to remove this deprecated code someday.(ñ½ó„şÿÿÿÿ
+Jsquid:S1133"5Do not forget to remove this deprecated code someday.(±¬ø
+Ssquid:MissingDeprecatedCheck"(Add the missing @deprecated Javadoc tag.(ñ½ó„şÿÿÿÿ
+Nsquid:MissingDeprecatedCheck"(Add the missing @deprecated Javadoc tag.(±¬ø
+[squid:CallToDeprecatedMethod"0Remove this use of "stopFlag"; it is deprecated.(ù–¶Ÿûÿÿÿÿ
