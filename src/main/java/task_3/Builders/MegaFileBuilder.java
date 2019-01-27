@@ -42,7 +42,7 @@ public class MegaFileBuilder {
                      * места в файле, записано как число символов из учета:
                      * 1 Kb = 1024 byte
                      */
-                    int local = sizeInKiloByte * 1024;
+                    int local = sizeInKiloByte * 1000;
 
                     /*
                      * пока свободное место в файле есть

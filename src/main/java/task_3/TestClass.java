@@ -14,7 +14,7 @@ import java.io.IOException;
 public class TestClass {
 
     private static final String URL = "https://en.wikipedia.org/wiki/Java_(programming_language)";
-    private static final String PATH = "./stc14/src/main/java/task_3/out";
+    private static final String PATH = "./src/main/java/task_3/out";
 
     public static void main(String[] args) throws IOException {
 
@@ -22,6 +22,6 @@ public class TestClass {
         String[] words = urlWordsParser.parse(URL);
 
         MegaFileBuilder mfb = new MegaFileBuilder();
-        mfb.getFiles(PATH, 10, 1000, words, 50);
+        mfb.getFiles(PATH, 10, 1_000_000, words, 100);
     }
 }
