@@ -85,7 +85,7 @@ class ServerListener extends Thread {
                 String text = in.readUTF();
                 messages.add(text);
                 if (text.equalsIgnoreCase("exit")) {
-                    break;
+                    return;
                 }
 
                 String s = messages.poll();

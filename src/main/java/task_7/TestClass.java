@@ -3,12 +3,12 @@ package task_7;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * test class
+ * task_9 class
  */
 public class TestClass {
 
     static final String SIMPLE_CLASS_NAME = "SomeClass";
-    static final String PACKAGE_NAME = "task_7.out.SomeClass";
+    private static final String PACKAGE_NAME = "task_7.out.SomeClass";
 
     public static void main(String[] args) {
 

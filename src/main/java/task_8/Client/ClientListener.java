@@ -35,7 +35,7 @@ class ClientListener extends Thread {
             }
             server.close();
         } catch (IOException ex) {
-            System.out.println("Error : " + ex);
+            System.out.println("disconnect");
         }
     }
 }

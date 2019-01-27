@@ -43,7 +43,7 @@ public class Server {
      *
      * @throws IOException в случае проблеммы с соединением по сокету
      */
-    private void start() throws IOException {
+    private void start() {
         try (ServerSocket server = new ServerSocket(PORT)) {
 
             System.out.println("сервер запущен...");
@@ -54,6 +54,8 @@ public class Server {
                 ServerListener listener = new ServerListener(client, clientMap, messages);
                 listener.start();
             }
+        } catch (IOException e) {
+            System.out.println("e = " + e);
         }
     }
 
@@ -72,9 +74,8 @@ public class Server {
      * запускает сервер вызывая start()
      *
      * @param args входные аргументы
-     * @throws IOException при ошибке соединения по сокету
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         new Server().start();
     }
 }

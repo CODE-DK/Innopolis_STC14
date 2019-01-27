@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 /**
  * класс - клиент
@@ -29,7 +30,7 @@ public class Client {
      * @param args входные аргументы
      * @throws Exception при неудачном подключение к серверу
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         try (Socket server = new Socket(HOST, PORT)) {
 
@@ -37,6 +38,10 @@ public class Client {
             listener.start();
 
             manager(server);
+        } catch (UnknownHostException e) {
+            System.out.println("host is't exist");
+        } catch (IOException e) {
+            System.out.println("server is not available");
         }
     }
 
@@ -47,7 +52,7 @@ public class Client {
      * @param server сокет сервера
      * @throws IOException если потоки ввода вывода не открылись
      */
-    private static void manager(Socket server) throws IOException {
+    private static void manager(Socket server) {
 
         try (DataOutputStream out = new DataOutputStream(server.getOutputStream())) {
             BufferedReader message = new BufferedReader(new InputStreamReader(System.in));
@@ -58,13 +63,15 @@ public class Client {
             while (!server.isOutputShutdown()) {
 
                 String text = message.readLine();
-                if ("quit".equalsIgnoreCase(text)) {
+                if ("exit".equalsIgnoreCase(text)) {
                     break;
                 }
                 out.writeUTF(text);
                 out.flush();
             }
             message.close();
+        } catch (IOException e) {
+            System.out.println("e = " + e);
         }
     }
 
