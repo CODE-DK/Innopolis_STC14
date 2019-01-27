@@ -7,7 +7,6 @@
     <groupId>com.stc14</groupId>
     <artifactId>com.stc14</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <build>
         <plugins>
             <plugin>
@@ -42,6 +41,12 @@
             <artifactId>annotations-java5</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
         </dependency>
 
     </dependencies>

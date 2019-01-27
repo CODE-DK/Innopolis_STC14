@@ -4,18 +4,21 @@ import java.util.ArrayList;
 
 public class TestClass {
     public static void main(String[] args) {
+        javaHeapSpace();
+    }
 
-        ArrayList<String> arr = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
+    /**
+     *  метод завершиться с ошибкой
+     *  OutOfMemoryError c пометкой Java Heap Space.
+     */
+    private static void javaHeapSpace() {
+        ArrayList<String> anyArray = new ArrayList<>();
+        StringBuilder builder = new StringBuilder();
 
-        int j = 0;
-        try {
-            for (int i = 0; i < Integer.MAX_VALUE; i++) {
-                j = i;
-                arr.add(sb.append(i).toString());
-            }
-        }catch (OutOfMemoryError e){
-            System.out.println(j);
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            anyArray.add(builder.append(i).toString());
         }
     }
+
+
 }
