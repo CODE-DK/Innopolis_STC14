@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,18 +20,20 @@ public class SReader extends Thread {
     private static final String REG_EX = "[A-ZА-Я].+?[.|!|?]";
     private BufferedReader reader;
     private final HashSet words;
+    private Queue<String> queue;
 
     /**
      * поле для записи в выходной файл
      */
-    private final SWriter sWriter;
+
     private final StringBuilder builder;
 
-    public SReader(String file, SWriter s, HashSet<String> words) throws IOException {
-        this.sWriter = s;
+    public SReader(String file, HashSet<String> words, Queue<String> queue) throws IOException {
+
         initReader(file);
         this.words = words;
         this.builder = new StringBuilder();
+        this.queue = queue;
     }
 
     /**
@@ -79,7 +82,7 @@ public class SReader extends Thread {
     private void findSentence(String s) {
         HashSet<String> sentence = parseSentence(s);
         if (!Collections.disjoint(words, sentence)) {
-            sWriter.writeStringToFile(s);
+            queue.add(s);
         }
     }
 

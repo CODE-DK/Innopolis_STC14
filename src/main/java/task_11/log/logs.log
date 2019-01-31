@@ -1,0 +1,425 @@
+2019-01-31 12:08:03 INFO  Solution:43 - created connection to DB
+2019-01-31 12:08:03 INFO  Solution:173 - uploaded jdbc driver
+2019-01-31 12:08:03 INFO  PersonDAOimpl:121 - try to disable an auto commit
+2019-01-31 12:08:03 INFO  PersonDAOimpl:124 - auto commit have disabled
+2019-01-31 12:08:03 INFO  SubjectDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:08:03 INFO  SubjectDAOimpl:119 - auto commit have disabled
+2019-01-31 12:08:03 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:08:03 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:08:03 INFO  CourseDAOimpl:71 - start with getting subjects by person
+2019-01-31 12:08:03 INFO  CourseDAOimpl:75 - trying with query
+2019-01-31 12:08:03 INFO  CourseDAOimpl:77 - query have done successfully
+2019-01-31 12:08:03 INFO  CourseDAOimpl:85 - commit
+2019-01-31 12:09:31 INFO  Solution:43 - created connection to DB
+2019-01-31 12:09:31 INFO  Solution:170 - uploaded jdbc driver
+2019-01-31 12:09:31 INFO  PersonDAOimpl:121 - try to disable an auto commit
+2019-01-31 12:09:31 INFO  PersonDAOimpl:124 - auto commit have disabled
+2019-01-31 12:09:31 INFO  SubjectDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:09:31 INFO  SubjectDAOimpl:119 - auto commit have disabled
+2019-01-31 12:09:31 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:09:31 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:09:31 INFO  CourseDAOimpl:71 - start with getting subjects by person
+2019-01-31 12:09:31 INFO  CourseDAOimpl:75 - trying with query
+2019-01-31 12:09:31 INFO  CourseDAOimpl:77 - query have done successfully
+2019-01-31 12:09:31 INFO  CourseDAOimpl:85 - commit
+2019-01-31 12:10:21 INFO  Solution:43 - created connection to DB
+2019-01-31 12:10:21 INFO  Solution:174 - uploaded jdbc driver
+2019-01-31 12:10:21 INFO  PersonDAOimpl:121 - try to disable an auto commit
+2019-01-31 12:10:21 INFO  PersonDAOimpl:124 - auto commit have disabled
+2019-01-31 12:10:21 INFO  SubjectDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:10:21 INFO  SubjectDAOimpl:119 - auto commit have disabled
+2019-01-31 12:10:21 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:10:21 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:10:21 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:10:21 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 0 insert into course(person_id, subject_id) values ('0','0') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:10:21 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:10:21 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:10:21 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 0 insert into course(person_id, subject_id) values ('0','0') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:10:21 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:10:21 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 0 insert into course(person_id, subject_id) values ('0','0') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:10:21 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:10:21 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:10:21 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 0 insert into course(person_id, subject_id) values ('0','0') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:10:21 INFO  CourseDAOimpl:71 - start with getting subjects by person
+2019-01-31 12:10:21 INFO  CourseDAOimpl:75 - trying with query
+2019-01-31 12:10:21 INFO  CourseDAOimpl:77 - query have done successfully
+2019-01-31 12:10:21 INFO  CourseDAOimpl:85 - commit
+2019-01-31 12:18:25 INFO  Solution:43 - created connection to DB
+2019-01-31 12:18:25 INFO  Solution:172 - uploaded jdbc driver
+2019-01-31 12:18:25 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:18:25 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:18:25 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:18:25 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:18:25 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:18:25 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:18:25 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:18:25 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:18:25 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:18:25 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:18:25 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:18:25 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:18:25 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:18:25 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:18:25 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:18:25 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:18:25 INFO  CourseDAOimpl:105 - create query have done successfully
+2019-01-31 12:18:25 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:18:25 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 0 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:18:25 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:18:25 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:18:25 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 0 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:18:25 INFO  CourseDAOimpl:71 - start with getting subjects by person
+2019-01-31 12:18:25 INFO  CourseDAOimpl:75 - trying with query
+2019-01-31 12:18:25 INFO  CourseDAOimpl:77 - query have done successfully
+2019-01-31 12:18:25 INFO  CourseDAOimpl:85 - commit
+2019-01-31 12:19:51 INFO  Solution:43 - created connection to DB
+2019-01-31 12:19:51 INFO  Solution:173 - uploaded jdbc driver
+2019-01-31 12:19:51 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:19:51 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:19:51 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:19:51 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:19:51 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:19:51 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:19:51 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:19:51 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:19:51 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:19:51 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:19:51 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:19:51 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:19:51 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:19:51 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:19:51 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:21:21 INFO  Solution:43 - created connection to DB
+2019-01-31 12:21:21 INFO  Solution:170 - uploaded jdbc driver
+2019-01-31 12:21:21 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:21:21 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:21:21 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:21:21 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:21:21 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:21:21 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:21:21 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:21:21 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:21:21 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:21:21 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:21:21 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:21:21 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:21:21 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:21:21 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:21:21 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:24:33 INFO  Solution:43 - created connection to DB
+2019-01-31 12:24:33 INFO  Solution:172 - uploaded jdbc driver
+2019-01-31 12:24:33 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:24:33 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:24:33 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:24:33 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:24:33 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:24:33 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:24:33 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:24:33 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:24:33 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:24:33 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:24:33 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:24:33 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:24:33 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:24:33 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:24:33 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:24:33 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:24:33 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:24:33 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:24:33 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:24:33 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:24:49 INFO  Solution:43 - created connection to DB
+2019-01-31 12:24:49 INFO  Solution:168 - uploaded jdbc driver
+2019-01-31 12:24:49 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:24:49 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:24:49 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:24:49 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:24:49 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:24:49 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:24:49 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:24:49 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:24:49 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:24:49 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:24:49 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:24:49 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:24:49 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:24:49 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:24:49 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:24:49 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:24:49 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:24:49 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:24:49 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:24:49 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:24:58 INFO  Solution:43 - created connection to DB
+2019-01-31 12:24:58 INFO  Solution:168 - uploaded jdbc driver
+2019-01-31 12:24:58 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:24:58 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:24:58 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:24:58 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:24:58 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:24:58 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:24:58 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:24:58 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:24:58 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:24:58 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:24:58 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:24:58 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:24:58 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:24:58 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:24:58 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:24:58 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:24:58 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:24:58 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:24:58 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:24:58 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:25:25 INFO  Solution:43 - created connection to DB
+2019-01-31 12:25:25 INFO  Solution:168 - uploaded jdbc driver
+2019-01-31 12:25:25 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:25:25 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:25:25 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:25:25 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:25:25 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:25:25 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:25:25 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:25:25 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:25:25 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:25:25 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:25:25 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:25:25 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:25:25 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:25:25 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:25:25 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:25:25 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:25:25 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:25:25 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:25:25 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:25:25 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:25:33 INFO  Solution:43 - created connection to DB
+2019-01-31 12:25:33 INFO  Solution:168 - uploaded jdbc driver
+2019-01-31 12:25:33 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:25:33 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:25:33 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:25:33 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:25:33 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:25:33 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:25:33 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:25:33 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:25:33 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:25:33 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:25:33 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:25:33 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:25:33 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:25:33 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:25:33 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:25:33 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:25:33 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:25:33 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:25:33 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:25:33 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:26:11 INFO  Solution:43 - created connection to DB
+2019-01-31 12:26:11 INFO  Solution:168 - uploaded jdbc driver
+2019-01-31 12:26:11 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:26:11 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:26:11 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:26:11 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:26:11 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:26:11 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:26:11 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:26:11 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:26:11 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:26:11 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:26:11 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:26:11 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:26:11 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:26:11 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:26:11 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:26:11 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:26:11 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:26:11 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:26:11 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:26:11 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 1 insert into course(person_id, subject_id) values ('39','28') was aborted.  Call getNextException to see the cause.
+2019-01-31 12:39:28 INFO  Solution:43 - created connection to DB
+2019-01-31 12:39:28 INFO  Solution:171 - uploaded jdbc driver
+2019-01-31 12:39:28 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 12:39:28 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 12:39:28 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 12:39:28 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 12:39:28 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 12:39:28 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 12:39:28 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 12:39:28 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 12:39:28 INFO  PersonDAOimpl:66 - select query reading have done successfully with 39 Mark 687736800000 params
+2019-01-31 12:39:28 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:39:28 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:39:28 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 12:39:28 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 12:39:28 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 12:39:28 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 12:39:28 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 12:39:28 ERROR CourseDAOimpl:107 - Error : java.sql.BatchUpdateException: Batch entry 0 insert into course(person_id, subject_id) values ('39','25') was aborted.  Call getNextException to see the cause. --try to make a rollback
+2019-01-31 12:39:28 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 12:39:28 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 12:39:28 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with java.sql.BatchUpdateException: Batch entry 0 insert into course(person_id, subject_id) values ('39','25') was aborted.  Call getNextException to see the cause.
+2019-01-31 13:31:45 INFO  Solution:43 - created connection to DB
+2019-01-31 13:31:45 INFO  Solution:171 - uploaded jdbc driver
+2019-01-31 13:31:45 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 13:31:45 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 13:31:45 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 13:31:45 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 13:31:45 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 13:31:45 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 13:31:45 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 13:31:45 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 13:31:45 INFO  PersonDAOimpl:66 - select query reading have done successfully with 40 Sam 730933200000 params
+2019-01-31 13:31:45 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:31:45 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:31:45 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 13:31:45 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:31:45 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:31:45 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 26 astronomy params
+2019-01-31 13:31:45 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 13:31:45 INFO  CourseDAOimpl:105 - create query have done successfully
+2019-01-31 13:34:42 INFO  Solution:43 - created connection to DB
+2019-01-31 13:34:42 INFO  Solution:175 - uploaded jdbc driver
+2019-01-31 13:34:42 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 13:34:42 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 13:34:42 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 13:34:42 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 13:34:42 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 13:34:42 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 13:34:42 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 13:34:42 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 13:34:42 INFO  PersonDAOimpl:66 - select query reading have done successfully with 40 Sam 730933200000 params
+2019-01-31 13:34:42 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:34:42 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:34:42 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 13:34:42 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:34:42 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:34:42 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 26 astronomy params
+2019-01-31 13:34:42 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 13:34:42 ERROR CourseDAOimpl:107 - Error : org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "course_pk"
+  Подробности: Key (person_id, subject_id)=(40, 25) already exists. --try to make a rollback
+2019-01-31 13:34:42 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 13:34:42 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 13:34:42 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "course_pk"
+  Подробности: Key (person_id, subject_id)=(40, 25) already exists.
+2019-01-31 13:34:42 INFO  CourseDAOimpl:71 - start with getting subjects by person
+2019-01-31 13:34:42 INFO  CourseDAOimpl:75 - trying with query
+2019-01-31 13:34:42 INFO  CourseDAOimpl:77 - query have done successfully
+2019-01-31 13:34:42 INFO  CourseDAOimpl:85 - commit
+2019-01-31 13:42:07 INFO  Solution:43 - created connection to DB
+2019-01-31 13:42:07 INFO  Solution:177 - uploaded jdbc driver
+2019-01-31 13:42:07 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 13:42:07 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 13:42:07 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 13:42:07 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 13:42:07 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 13:42:07 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 13:42:07 INFO  PersonDAOimpl:66 - select query reading have done successfully with 40 Sam 730933200000 params
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 26 astronomy params
+2019-01-31 13:42:07 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 13:42:07 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 13:42:07 INFO  PersonDAOimpl:66 - select query reading have done successfully with 41 Bobby 320971410000000 params
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:42:07 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 13:42:07 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 13:42:07 INFO  CourseDAOimpl:105 - create query have done successfully
+2019-01-31 13:43:45 INFO  Solution:43 - created connection to DB
+2019-01-31 13:43:45 INFO  Solution:182 - uploaded jdbc driver
+2019-01-31 13:43:45 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 13:43:45 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 13:43:45 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 13:43:45 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 13:43:45 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 13:43:45 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 13:43:45 INFO  PersonDAOimpl:66 - select query reading have done successfully with 40 Sam 730933200000 params
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 26 astronomy params
+2019-01-31 13:43:45 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 13:43:45 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 13:43:45 INFO  PersonDAOimpl:66 - select query reading have done successfully with 41 Bobby 320971410000000 params
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 13:43:45 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 13:43:45 ERROR CourseDAOimpl:107 - Error : org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "course_pk"
+  Подробности: Key (person_id, subject_id)=(41, 25) already exists. --try to make a rollback
+2019-01-31 13:43:45 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 13:43:45 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 13:43:45 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "course_pk"
+  Подробности: Key (person_id, subject_id)=(41, 25) already exists.
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:43:45 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 27 geography params
+2019-01-31 13:43:45 INFO  CourseDAOimpl:44 - start with getting people by subject
+2019-01-31 13:43:45 INFO  CourseDAOimpl:48 - trying with query
+2019-01-31 13:43:45 INFO  CourseDAOimpl:50 - query have done successfully
+2019-01-31 13:43:45 INFO  CourseDAOimpl:59 - commit
+2019-01-31 13:45:29 INFO  Solution:43 - created connection to DB
+2019-01-31 13:45:29 INFO  Solution:181 - uploaded jdbc driver
+2019-01-31 13:45:29 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 13:45:29 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 13:45:29 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 13:45:29 INFO  CourseDAOimpl:137 - auto commit have disabled
+2019-01-31 13:45:29 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 13:45:29 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 13:45:29 INFO  PersonDAOimpl:66 - select query reading have done successfully with 40 Sam 730933200000 params
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 26 astronomy params
+2019-01-31 13:45:29 INFO  PersonDAOimpl:54 - select query in Person have started
+2019-01-31 13:45:29 INFO  PersonDAOimpl:60 - select query have done successfully, start reading an answer
+2019-01-31 13:45:29 INFO  PersonDAOimpl:66 - select query reading have done successfully with 41 Bobby 320971410000000 params
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 25 chemistry params
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 28 physics params
+2019-01-31 13:45:29 INFO  CourseDAOimpl:97 - one person to many subjects
+2019-01-31 13:45:29 ERROR CourseDAOimpl:107 - Error : org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "course_pk"
+  Подробности: Key (person_id, subject_id)=(41, 25) already exists. --try to make a rollback
+2019-01-31 13:45:29 INFO  CourseDAOimpl:145 - rollback have started
+2019-01-31 13:45:29 INFO  CourseDAOimpl:148 - rollback have finished successfully
+2019-01-31 13:45:29 ERROR CourseDAOimpl:109 - rollback have done successfully, create block stop with org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "course_pk"
+  Подробности: Key (person_id, subject_id)=(41, 25) already exists.
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:51 - select query in Subject have started
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:57 - select query have done successfully, start reading an answer
+2019-01-31 13:45:29 INFO  SubjectDAOimpl:62 - select query reading have done successfully with 27 geography params
+2019-01-31 13:45:29 INFO  CourseDAOimpl:44 - start with getting people by subject
+2019-01-31 13:45:29 INFO  CourseDAOimpl:48 - trying with query
+2019-01-31 13:45:29 INFO  CourseDAOimpl:50 - query have done successfully
+2019-01-31 13:45:29 INFO  CourseDAOimpl:59 - commit
+2019-01-31 14:02:35 INFO  Solution:42 - created connection to DB
+2019-01-31 14:02:35 INFO  Solution:199 - uploaded jdbc driver
+2019-01-31 14:02:35 INFO  PersonDAOimpl:116 - try to disable an auto commit
+2019-01-31 14:02:35 INFO  PersonDAOimpl:119 - auto commit have disabled
+2019-01-31 14:02:35 INFO  SubjectDAOimpl:111 - try to disable an auto commit
+2019-01-31 14:02:35 INFO  SubjectDAOimpl:114 - auto commit have disabled
+2019-01-31 14:02:35 INFO  CourseDAOimpl:134 - try to disable an auto commit
+2019-01-31 14:02:35 INFO  CourseDAOimpl:137 - auto commit have disabled
