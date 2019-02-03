@@ -81,7 +81,7 @@ public class Client {
      */
     private static void sayHallo(String name) {
 
-        System.out.printf("Здравствуйте, %s!", name);
+        System.out.printf("Здравствуйте, %s! ", name);
         System.out.println("введите текст сообщения");
     }
 
@@ -96,7 +96,7 @@ public class Client {
     @NotNull
     private static String login(DataOutputStream out, BufferedReader message) throws IOException {
 
-        System.out.println("Введите имя :");
+        System.out.print("Введите имя : ");
         String name = message.readLine();
         out.writeUTF(name);
         out.flush();

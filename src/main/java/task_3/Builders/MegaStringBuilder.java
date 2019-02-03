@@ -10,30 +10,16 @@ import java.util.Random;
  */
 class MegaStringBuilder {
 
-    /**
-     * исходный список слов
-     */
     private final String[] words; //
-
-    /**
-     * массив символов окончания предложения
-     */
     private static final char[] SYMBOLS = {'.', '!', '?'};
-
-    /**
-     * длина предложения
-     */
-    private final int lengthOfString; // предложение состоит 1-15 слов
-
-    /**
-     * рандомайзер
-     */
+    private final int lengthOfString;
     private final Random random;
 
     /**
      * Конструктор инициализации списка слов и длины предложения
      *
      * @param words исходный список слов
+     * @param probability вероятность появления слова в предложении
      */
     private int probability;
 
@@ -41,12 +27,12 @@ class MegaStringBuilder {
         this.words = words;
         this.probability = probability;
         random = new Random();
-        lengthOfString = 1 + random.nextInt(15);
+        lengthOfString = 1 + random.nextInt(15); // длина предложения 1-15 слов
     }
 
     /**
      * Метод для построения нового предложения
-     * Выходной параметр - строка, состоящая из {@code lrngthOfString} слов
+     * Выходной параметр - строка, состоящая из {@code lengthOfString} слов
      * разделенных знаком {@code char = ' ' }.
      *
      * @return строка - предложение
@@ -57,14 +43,14 @@ class MegaStringBuilder {
 
         for (int i = 0; i < lengthOfString; i++) {
 
-            int v = 1 + random.nextInt(100); // вероятность появления символа после слова в предложении 1 - 100%
-            int x = random.nextInt(100); // вероятность того, что слово не появится в строке
+            int symbolProbability = 1 + random.nextInt(100); // вероятность появления символа после слова в предложении 1 - 100%
+            int initProbability = random.nextInt(100); // вероятность того, что слово не появится в строке
 
             String s = getRandomWord();
 
-            while (probability < x) {
+            while (probability < initProbability) {
                 s = getRandomWord();
-                x = random.nextInt(100);
+                initProbability = random.nextInt(100);
             }
 
             if (i == 0) { // если слово в предложении первое
@@ -73,7 +59,7 @@ class MegaStringBuilder {
                 out.append(getRandomWord()); //иначе просто слово
             }
 
-            if (v > 50 && i < lengthOfString - 1) { // добавляем символ после каждого слова кроме последнего
+            if (symbolProbability > 50 && i < lengthOfString - 1) { // добавляем символ после каждого слова кроме последнего
                 out.append(", ");
             } else if (i < lengthOfString - 1) {
                 out.append(' ');
@@ -85,21 +71,10 @@ class MegaStringBuilder {
         return out.toString();
     }
 
-    /**
-     * Метод возвращает произвольный символ из {@code SYMBOLS} массива
-     *
-     * @return символ типа {@link java.lang.Character}
-     */
     private char getRandomSymbol() {
         return SYMBOLS[random.nextInt(SYMBOLS.length)]; // рандомный символ окончания предложения
     }
 
-    /**
-     * Метод возвращает произвольное слово из исходного массива {@code words}
-     * типа {@link java.lang.String}
-     *
-     * @return строка {@link java.lang.String} из массива {@code words}
-     */
     private String getRandomWord() {
         return words[random.nextInt(words.length)]; // рандомное слово из списка
     }

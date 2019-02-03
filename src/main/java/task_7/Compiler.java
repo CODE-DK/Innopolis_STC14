@@ -21,11 +21,13 @@ class Compiler {
     /**
      * путь к директории для компиляции
      */
-    private static final String DIR = "src/main/java/task_7/out";
+    private final String dir = "target";
+    private final String name;
     private StringBuilder builder;
 
-    Compiler() {
+    Compiler(String name) {
         builder = new StringBuilder();
+        this.name = name;
     }
 
     /**
@@ -49,8 +51,7 @@ class Compiler {
             String[] javacOpts = {getPath()};
             javac.run(null, null, null, javacOpts);
         } catch (IOException e) {
-            System.out.println("Ошибка компиляции");
-            e.printStackTrace();
+            System.out.println("Ошибка компиляции " + e);
         }
     }
 
@@ -62,7 +63,7 @@ class Compiler {
      */
     @NotNull
     private String getPath() {
-        return "./" + DIR + "/" + TestClass.SIMPLE_CLASS_NAME + ".java";
+        return "./" + dir + "/" + name + ".java";
     }
 
     /**
@@ -101,7 +102,7 @@ class Compiler {
      * @return строка - класс
      */
     private String workerImpl() {
-        return "package task_7.out;\n" +
+        return /*"package target;\n" +*/
                 "import task_7.Worker;\n" +
                 "public class SomeClass implements Worker {\n" +
                 "public void doWork(){\n";

@@ -19,11 +19,13 @@ public class CompileLoader extends ClassLoader {
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
 
-        try {
-            byte[] bites = Files.readAllBytes(Paths.get(name));
-            return defineClass(name, bites, 0, bites.length);
-        } catch (IOException e) {
-            System.out.println("IOException in findClass() of CompileLoader");
+        if(TestClass.getClassName().equals(name)){
+            try {
+                byte[] bites = Files.readAllBytes(Paths.get("./target/SomeClass.class"));
+                return defineClass(name, bites, 0, bites.length);
+            } catch (IOException e) {
+                System.out.println("IOException in findClass() of CompileLoader");
+            }
         }
         return super.findClass(name);
     }

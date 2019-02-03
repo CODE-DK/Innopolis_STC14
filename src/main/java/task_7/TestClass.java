@@ -7,16 +7,19 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class TestClass {
 
-    static final String SIMPLE_CLASS_NAME = "SomeClass";
-    private static final String PACKAGE_NAME = "task_7.out.SomeClass";
+    private static final String CLASS_NAME = "SomeClass";
+
+    public static String getClassName() {
+        return CLASS_NAME;
+    }
 
     public static void main(String[] args) {
 
-        Compiler java = new Compiler();
+        Compiler java = new Compiler(CLASS_NAME);
         java.compile();
 
-        ClassLoader cl = new CompileLoader();
-        Object o = getObject(cl);
+        ClassLoader loader = new CompileLoader();
+        Object o = getObject(loader);
         doIt(o);
     }
 
@@ -35,13 +38,12 @@ public class TestClass {
      * метод слушит для создания экземпляра класса
      * пользуясь конструктором без параметров создаваемого класса
      *
-     * @param cl класс - загрузчик
+     * @param loader класс - загрузчик
      * @return экземпляр требуемого класса в соответствии с используемым именем
      */
-    private static Object getObject(ClassLoader cl) {
+    private static Object getObject(ClassLoader loader) {
         try {
-
-            Class<?> clazz = cl.loadClass(PACKAGE_NAME);
+            Class<?> clazz = loader.loadClass(CLASS_NAME);
             return clazz.getConstructor().newInstance();
 
         } catch (IllegalAccessException e) {

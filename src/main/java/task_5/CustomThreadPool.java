@@ -8,36 +8,39 @@ import java.util.concurrent.LinkedBlockingDeque;
 /**
  * Простой кастомный тред пул
  */
-public class CustomThreadPool {
+class CustomThreadPool {
 
-    private BlockingQueue<Runnable> tasks;
-    private List<Thread> threads;
+    private final BlockingQueue<Runnable> tasks;
+    private final List<Thread> threads;
     private boolean isShutDown;
 
     /**
      * @param size число потоков в пуле
      */
 
-    private CustomThreadPool(int size) {
+    CustomThreadPool(int size) {
         this.tasks = new LinkedBlockingDeque<>();
         this.threads = new ArrayList<>(size);
         this.isShutDown = false;
 
         for (int i = 0; i < size; i++) {
-            Executor w = new Executor(this);
-            w.setName("Worker " + i);
-            w.start();
-            threads.add(w);
+            Executor executor = new Executor(this);
+            executor.setName("Worker " + i);
+            executor.start();
+            threads.add(executor);
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    BlockingQueue<Runnable> getTasks() {
+        return tasks;
+    }
 
-        CustomThreadPool p = new CustomThreadPool(5);
-        for (int i = 0; i < 100; i++) {
-            p.submit(new Thread("Thread " + i));
-        }
-        p.shutdown();
+    List<Thread> getThreads() {
+        return threads;
+    }
+
+    boolean isShutDown() {
+        return isShutDown;
     }
 
     /**
@@ -46,7 +49,7 @@ public class CustomThreadPool {
      * @param task задача на выполнение
      * @throws InterruptedException
      */
-    private void submit(Runnable task) throws InterruptedException {
+    void submit(Runnable task) throws InterruptedException {
         if (!this.isShutDown) {
             tasks.put(task);
         } else {
@@ -57,47 +60,8 @@ public class CustomThreadPool {
     /**
      * Выключение тред пула. Пул не принимает новые задачи, но те, что уже есть в очереди
      */
-    private void shutdown() {
+    void shutdown() {
         isShutDown = true;
-    }
-
-    /**
-     * Воркер - тред выполняющий задачи из очереди
-     */
-    private class Executor extends Thread {
-        private CustomThreadPool pool;
-
-        /**
-         * Конструктор, привязывает поток к пулу.
-         *
-         * @param pool тред пул
-         */
-        Executor(CustomThreadPool pool) {
-            this.pool = pool;
-        }
-
-
-        /**
-         * Пока пул не выключен, получает задачи из очереди и выполняет их.
-         */
-        @Override
-        public void run() {
-            while (!pool.isShutDown || !this.pool.tasks.isEmpty()) {
-                Runnable task;
-                while ((task = this.pool.tasks.poll()) != null) {
-                    task.run();
-                    System.out.println(
-                            "В пуле потоков : " + threads.size() +
-                                    "\tОсталось задач : " + pool.tasks.size());
-                }
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    System.out.println("Проблема с слипами...");
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 
 }

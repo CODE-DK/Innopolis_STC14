@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public class TestClass {
 
-    private static final String FILE = "./src/main/java/task_6/out/store.xml";
+    private static final String FILE = "./target/store.xml";
 
     public static void main(String[] args) throws IOException, IllegalAccessException {
 

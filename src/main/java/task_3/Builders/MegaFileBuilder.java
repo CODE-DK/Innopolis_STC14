@@ -11,6 +11,8 @@ import java.io.*;
  */
 public class MegaFileBuilder {
 
+    private static final int KBYTE = 1024;
+
     /**
      * основной метод класса, на вход получает путь к директории, по которой создает требуемое количество текстовых файлов
      * заданого размера, при этом вероятность вхождения слова в предложение так же задается в параметре
@@ -42,7 +44,7 @@ public class MegaFileBuilder {
                      * места в файле, записано как число символов из учета:
                      * 1 Kb = 1024 byte
                      */
-                    int local = sizeInKiloByte * 1024;
+                    int local = sizeInKiloByte * KBYTE;
 
                     /*
                      * пока свободное место в файле есть
@@ -55,7 +57,7 @@ public class MegaFileBuilder {
                         } else break;
                     }
                 } catch (IOException e) {
-                    System.out.println(e);
+                    System.out.println("Ошибка при чтении файла = " + e);
                 }
             }
         }

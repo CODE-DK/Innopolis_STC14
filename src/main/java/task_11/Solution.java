@@ -64,10 +64,8 @@ public class Solution {
 
         } catch (ClassNotFoundException e) {
             LOGGER.error("ClassNotFoundException from Solution class");
-            System.out.println("Solution Error = " + e);
         } catch (SQLException e) {
             LOGGER.error("SQLException from Solution class");
-            System.out.println("Solution Error = " + e);
         }
     }
 

@@ -3,6 +3,9 @@ package task_3.Builders;
 import java.util.Random;
 
 /**
+ * класс для формирования абзацей текста в соответствии с требованиями
+ * формирует абзаци произвольной длины.
+ *
  * @author Komovskiy Dmitriy
  * @version 18.01.2019 v1.0
  */
