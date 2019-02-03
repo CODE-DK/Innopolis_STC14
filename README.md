@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/DK-SPB/Innopolis_STC14.svg?branch=master)](https://travis-ci.org/DK-SPB/Innopolis_STC14)
 # Проект Innopolis_STC14
 учебный проект Иннополис по курсу повышения квалификации Java EE developer
 на протяжении курса решаемые задачи будут добавляться по мере выполнения 
