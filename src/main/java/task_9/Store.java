@@ -10,22 +10,23 @@ class Store {
      * массив ссылок на ресурсы
      */
     static final String[] SOURCES = {
-            "https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html",
-            "https://baconipsum.com/api/?type=meat-and-filler&paras=5&format=text",
-            "./src/main/java/task_9/data/in.txt"
+            "./target/data/in.txt",
+            "./target/data/in2.txt",
+            "./target/data/in3.txt",
+            "./target/data/in4.txt",
     };
 
     /**
      * массив слов для поиска совпадений
      */
     static final String[] WORDS = {
-            "leberkas",
+            "книга",
             "того",
-            "hamburger"
+            "будем"
     };
 
     /**
      * путь к выходному файлу
      */
-    static final String RES = "./src/main/java/task_9/data/out.txt";
+    static final String RES = "./target/data/out.txt";
 }

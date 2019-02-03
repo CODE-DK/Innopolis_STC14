@@ -20,7 +20,7 @@ import java.util.List;
  * @author Komovskiy Dmitriy
  * @version v1.0
  */
-public class CourseDAOimpl implements CourseDAO {
+public class CourseDAOimpl extends AbstractDAO implements CourseDAO {
 
     /**
      * класс поддерживает логгирование в выходной файл в директории log
@@ -89,7 +89,6 @@ public class CourseDAOimpl implements CourseDAO {
             LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
             LOGGER.error("rollback have done successfully, create block stop with " + e);
-            System.out.println("e = " + e);
         }
         return result;
     }
@@ -122,7 +121,6 @@ public class CourseDAOimpl implements CourseDAO {
             LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
             LOGGER.error("rollback have done successfully, create block stop with " + e);
-            System.out.println("e = " + e);
         }
         return result;
     }
@@ -149,7 +147,6 @@ public class CourseDAOimpl implements CourseDAO {
             LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
             LOGGER.error("rollback have done successfully, create block stop with " + e);
-            System.out.println("e = " + e);
         }
     }
 
@@ -175,29 +172,14 @@ public class CourseDAOimpl implements CourseDAO {
             LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
             LOGGER.error("rollback have done successfully, create block stop with " + e);
-            System.out.println("e = " + e);
         }
     }
 
     private void stopCommit(Connection connection) {
-        LOGGER.info("try to disable an auto commit");
-        try {
-            connection.setAutoCommit(false);
-            LOGGER.info("auto commit have disabled");
-        } catch (SQLException e) {
-            LOGGER.error("Error : " + e);
-            System.out.println("e = " + e);
-        }
+        super.stopCommit(connection, LOGGER);
     }
 
     private void easyRollBack(Connection connection) {
-        LOGGER.info("rollback have started");
-        try {
-            connection.rollback();
-            LOGGER.info("rollback have finished successfully");
-        } catch (SQLException e) {
-            LOGGER.error("Error : " + e);
-            System.out.println("ex = " + e);
-        }
+        super.easyRollBack(connection, LOGGER);
     }
 }

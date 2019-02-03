@@ -1,7 +1,5 @@
 package task_9;
 
-import java.io.IOException;
-
 /**
  * интерфейс в соответствии с заданием
  * в составе имеет один метод с параметрами
@@ -18,5 +16,5 @@ public interface Occurrences {
      * @param words массив слов для проверки на вхождение в предложения
      * @param res путь к выходнму файлу для записи предложений
      */
-    void getOccurrences(String[] sources, String[] words, String res) throws IOException, InterruptedException;
+    void getOccurrences(String[] sources, String[] words, String res);
 }

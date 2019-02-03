@@ -18,6 +18,8 @@ import java.util.regex.Pattern;
 public class SReader extends Thread {
 
     private static final String REG_EX = "[A-ZА-Я].+?[.|!|?]";
+    private static final String PUNCTUATIONS = "[^a-zA-Zа-яА-Я\\d\\s]";
+    private static final String SPACE = "\\s+";
     private BufferedReader reader;
     private final HashSet words;
     private Queue<String> queue;
@@ -28,9 +30,13 @@ public class SReader extends Thread {
 
     private final StringBuilder builder;
 
-    public SReader(String file, HashSet<String> words, Queue<String> queue) throws IOException {
+    public SReader(String file, HashSet<String> words, Queue<String> queue) {
 
-        initReader(file);
+        try {
+            initReader(file);
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не доступен  для чтения = " + e);
+        }
         this.words = words;
         this.builder = new StringBuilder();
         this.queue = queue;
@@ -95,7 +101,7 @@ public class SReader extends Thread {
      */
     private HashSet<String> parseSentence(String sentence) {
         HashSet<String> result = new HashSet<>();
-        Collections.addAll(result, removePunctuation(sentence.toLowerCase()).split("\\s+"));
+        Collections.addAll(result, removePunctuation(sentence.toLowerCase()).split(SPACE));
         return result;
     }
 
@@ -106,7 +112,7 @@ public class SReader extends Thread {
      * @return строка без знаков пунктуации
      */
     private String removePunctuation(String string) {
-        return string.replaceAll("[^a-zA-Zа-яА-Я\\d\\s]", "");
+        return string.replaceAll(PUNCTUATIONS, "");
     }
 
     @Override

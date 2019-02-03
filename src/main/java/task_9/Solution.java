@@ -10,6 +10,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Stream;
 
 /**
  * реализует интерфейс Occurrences, читает ссылки из входного массива
@@ -24,11 +25,7 @@ public class Solution implements Occurrences {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        try {
-            solution.getOccurrences(Store.SOURCES, Store.WORDS, Store.RES);
-        } catch (IOException e) {
-            System.out.println("e = " + e);
-        }
+        solution.getOccurrences(Store.SOURCES, Store.WORDS, Store.RES);
     }
 
     /**
@@ -39,23 +36,36 @@ public class Solution implements Occurrences {
      * @param sources массив ссылок на внешнии источники
      * @param words   массив слов для проверки на вхождение в предложения
      * @param res     путь к выходнму файлу для записи предложений
-     * @throws IOException
      */
     @Override
-    public void getOccurrences(String[] sources, String[] words, String res) throws IOException {
+    public void getOccurrences(String[] sources, String[] words, String res) {
+
         Queue<String> queue = new ConcurrentLinkedQueue<>();
-        ExecutorService ex = Executors.newFixedThreadPool(5);
+        ExecutorService ex = Executors.newFixedThreadPool(sources.length);
+
+        startThreadPool(sources, words, queue, ex);
+        initWriter(res, queue, ex);
+    }
+
+    private void initWriter(String res, Queue<String> queue, ExecutorService ex) {
         Thread writer = new SWriter(res, queue);
         writer.start();
-
-        Arrays.stream(sources).forEach(x -> {
-            try {
-                ex.submit(new SReader(x, new HashSet<>(Arrays.asList(words)), queue));
-            } catch (IOException e) {
-                System.out.println("e = " + e);
-            }
-        });
-        ex.shutdown();
+        waitAllThreads(ex);
         writer.interrupt();
+    }
+
+    private void startThreadPool(String[] sources, String[] words, Queue<String> queue, ExecutorService ex) {
+        Stream.of(sources)
+                .map(x -> new SReader(x, new HashSet<>(Arrays.asList(words)), queue))
+                .forEach(ex::submit);
+        ex.shutdown();
+    }
+
+    private void waitAllThreads(ExecutorService ex) {
+        while (true) {
+            if (ex.isTerminated()) {
+                break;
+            }
+        }
     }
 }
