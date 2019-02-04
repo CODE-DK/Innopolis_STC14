@@ -3,9 +3,6 @@ package task_9;
 import task_9.IO.SReader;
 import task_9.IO.SWriter;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  * реализует интерфейс Occurrences, читает ссылки из входного массива
  * в несколько потоков занимается поиском входжений в слов в предложения
  * каждого из источников, сохраняет все предложения, в которых встречается хотя бы одно из слов
- * списка. Результат в файл data.out.txt
+ * списка. Результат в файл data.out.txt_+__+_
  *
  * @author Komovskiy Dmitriy
  * @version v1.0
@@ -25,7 +22,8 @@ public class Solution implements Occurrences {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        solution.getOccurrences(Store.SOURCES, Store.WORDS, Store.RES);
+        Loader loader = new LoaderImpl();
+        solution.getOccurrences(loader.loadSources(), loader.loadWords(), loader.getOutDir());
     }
 
     /**
@@ -39,10 +37,8 @@ public class Solution implements Occurrences {
      */
     @Override
     public void getOccurrences(String[] sources, String[] words, String res) {
-
         Queue<String> queue = new ConcurrentLinkedQueue<>();
         ExecutorService ex = Executors.newFixedThreadPool(sources.length);
-
         startThreadPool(sources, words, queue, ex);
         initWriter(res, queue, ex);
     }
@@ -56,7 +52,7 @@ public class Solution implements Occurrences {
 
     private void startThreadPool(String[] sources, String[] words, Queue<String> queue, ExecutorService ex) {
         Stream.of(sources)
-                .map(x -> new SReader(x, new HashSet<>(Arrays.asList(words)), queue))
+                .map(x -> new SReader(x, words, queue))
                 .forEach(ex::submit);
         ex.shutdown();
     }

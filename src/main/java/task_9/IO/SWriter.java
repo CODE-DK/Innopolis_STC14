@@ -1,5 +1,8 @@
 package task_9.IO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Queue;
@@ -14,6 +17,7 @@ import java.util.Queue;
  */
 public class SWriter extends Thread {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(SWriter.class);
     private FileWriter writerToFile;
     private Queue<String> queue;
 
@@ -21,7 +25,7 @@ public class SWriter extends Thread {
         try {
             this.writerToFile = new FileWriter(pathToFile);
         } catch (IOException e) {
-            System.out.println("Ошибка доступа к файлу для записи = " + e);
+            LOGGER.debug("Ошибка доступа к файлу для записи = {}", e);
         }
         this.queue = queue;
     }
@@ -41,6 +45,14 @@ public class SWriter extends Thread {
                     System.out.println("Ошибка записи в файл = " + e);
                 }
             }
+        } close();
+    }
+
+    private void close(){
+        try {
+            writerToFile.close();
+        } catch (IOException e) {
+            LOGGER.debug("Ошибка при закрытии потока для записи = {}", e);
         }
     }
 
