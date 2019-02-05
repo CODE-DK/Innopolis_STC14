@@ -21,12 +21,8 @@ public class SWriter extends Thread {
     private FileWriter writerToFile;
     private Queue<String> queue;
 
-    public SWriter(String pathToFile, Queue<String> queue) {
-        try {
-            this.writerToFile = new FileWriter(pathToFile);
-        } catch (IOException e) {
-            LOGGER.debug("Ошибка доступа к файлу для записи = {}", e);
-        }
+    public SWriter(FileWriter fileWriter, Queue<String> queue) {
+        this.writerToFile = fileWriter;
         this.queue = queue;
     }
 
@@ -35,20 +31,23 @@ public class SWriter extends Thread {
      * принимает на вход строку и пишет ее в файл
      */
     private void writeStringToFile() {
-
         while (!isInterrupted()) {
             if (!queue.isEmpty()) {
                 try {
                     writerToFile.write(queue.poll() + "\n");
                     writerToFile.flush();
                 } catch (IOException e) {
-                    System.out.println("Ошибка записи в файл = " + e);
+                    LOGGER.debug("Ошибка записи в файл", e);
                 }
             }
-        } close();
+        }
+        close();
     }
 
-    private void close(){
+    /**
+     * закрытие потока для чтения
+     */
+    void close() {
         try {
             writerToFile.close();
         } catch (IOException e) {

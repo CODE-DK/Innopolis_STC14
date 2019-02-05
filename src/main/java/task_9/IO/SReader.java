@@ -38,11 +38,11 @@ public class SReader extends Thread {
         this.queue = queue;
     }
 
-    public Queue<String> getQueue() {
+     Queue<String> getQueue() {
         return queue;
     }
 
-    public void setQueue(Queue<String> queue) {
+     void setQueue(Queue<String> queue) {
         this.queue = queue;
     }
 
@@ -52,7 +52,7 @@ public class SReader extends Thread {
      * @param file строка - путь к файлу либо url
      * @throws FileNotFoundException если файл не существует или доступ к ссылке закрыт
      */
-    public BufferedReader initReader(String file) throws FileNotFoundException {
+     BufferedReader initReader(String file) throws FileNotFoundException {
         try {
             URL url = new URL(file);
             return new BufferedReader(new InputStreamReader(url.openStream()));
@@ -64,7 +64,7 @@ public class SReader extends Thread {
     /**
      * метод читает файл по по строкам в буффер
      */
-    public void parseText(BufferedReader reader) {
+     void parseText(BufferedReader reader) {
         final StringBuilder builder = new StringBuilder();
         reader.lines()
                 .map(builder::append)
@@ -75,7 +75,7 @@ public class SReader extends Thread {
      * метод сравнивает переданною строку на наличие в нем оконченного предложения
      * и если находит, удаляет его из буффера
      */
-    public void findRegEx(StringBuilder builder) {
+     void findRegEx(StringBuilder builder) {
         final Matcher matcher = Pattern.compile(REG_EX).matcher(builder.toString());
         while (matcher.find()) {
             String result = matcher.group();
@@ -88,15 +88,15 @@ public class SReader extends Thread {
 
     /**
      * метод сравнивает переданную строку на вхождение слов из
-     * {code words} и если находит, передает строку на запись
+     * {code words.txt} и если находит, передает строку на запись
      *
      * @param string строка по которой осуществляется поиск
      */
-    public boolean findSentence(String string, String[] words) {
+     boolean findSentence(String string, String[] words) {
         return !Collections.disjoint(Arrays.asList(words), Arrays.asList(parseSentence(string)));
     }
 
-    public void addToQueue(String sentence){
+     void addToQueue(String sentence){
         queue.add(sentence);
     }
 
@@ -107,7 +107,7 @@ public class SReader extends Thread {
      * @param sentence входная строка - предложение
      * @return множество слов из строки
      */
-    public String[] parseSentence(String sentence) {
+     String[] parseSentence(String sentence) {
         return removePunctuation(sentence.toLowerCase()).split(SPACE);
     }
 
@@ -117,7 +117,7 @@ public class SReader extends Thread {
      * @param string входная строка - предложение
      * @return строка без знаков пунктуации
      */
-    public String removePunctuation(String string) {
+     String removePunctuation(String string) {
         return string.replaceAll(PUNCTUATIONS, "");
     }
 
