@@ -7,49 +7,37 @@ import org.mockito.Mockito;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.times;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class SReaderTest {
 
     private SReader reader;
+    private final String TEST = "This is a test sentence.";
+    private final String[] POSITIVE_TEST_ARRAY = {"test", "array"};
+    private final String[] NEGATIVE_TEST_ARRAY = {"singleton", "array"};
+    private Queue<String> queue;
 
     @Before
-    public void setUp() throws Exception {
-        String file = "";
-        String[] words = {"1", "string", "3"};
-        Queue<String> queue = new ConcurrentLinkedQueue<>();
-        reader = new SReader(file, words, queue);
+    public void setUp() {
+        queue = new ConcurrentLinkedQueue<>();
+        reader = new SReader(TEST, POSITIVE_TEST_ARRAY, queue);
     }
 
     @Test (expected = FileNotFoundException.class)
     public void initEmptyPathToFile() throws FileNotFoundException {
-        String file = "";
-        Assert.assertEquals("несуществующий путь", BufferedReader.class, reader.initReader(file));
+        assertEquals("несуществующий путь", BufferedReader.class, reader.initReader(TEST));
     }
 
     @Test (expected = NullPointerException.class)
     public void initNullFilePath() throws FileNotFoundException {
-        String file = null;
-        Assert.assertEquals("передан null", BufferedReader.class, reader.initReader(file));
+        assertEquals("передан null", BufferedReader.class, reader.initReader(null));
     }
 
-    @Test
-    public void initReader() throws FileNotFoundException {
-        String file = "https://www.baeldung.com/ant-maven-gradle";
-        Assert.assertEquals("передан url", BufferedReader.class, reader.initReader(file));
-    }
 
     @Test
     public void parseText() {
@@ -57,61 +45,53 @@ public class SReaderTest {
     }
 
     @Test
+    public void PositiveRunTest(){
+
+    }
+
+    @Test
+    public void NegativeRunTest(){
+        Mockito.doThrow(FileNotFoundException.class);
+        reader.run();
+    }
+
+    @Test
     public void findRegEx() {
-        String sentence = "Some test string with different words";
-        String[] words = {"1", "string", "3"};
-        Queue mockQueue = Mockito.mock(LinkedBlockingDeque.class);
-        reader = new SReader(sentence, words, mockQueue);
-        StringBuilder builder = new StringBuilder(sentence);
+        StringBuilder builder = new StringBuilder(TEST);
         reader.findRegEx(builder);
-        SReader reader = Mockito.mock(SReader.class);
-        Mockito.verify(reader, times(1)).addToQueue(anyString());
+        assertEquals(TEST, queue.poll());
     }
 
     @Test
     public void addToQueue(){
-        String sentence = "123";
-        reader.getQueue().add(sentence);
-        Assert.assertEquals("добавляем в очередь", sentence, reader.getQueue().poll());
-    }
-
-    @Test
-    public void checkQueue(){
-        String sentence1 = "123";
-        String sentence2 = "456";
-        String sentence3 = "789";
-        reader.getQueue().add(sentence1);
-        reader.getQueue().add(sentence2);
-        reader.getQueue().add(sentence3);
-        Assert.assertEquals("добавляем порядок вставки снятия", sentence1, reader.getQueue().poll());
-        Assert.assertEquals("добавляем порядок вставки снятия", sentence2, reader.getQueue().poll());
-        Assert.assertEquals("добавляем порядок вставки снятия", sentence3, reader.getQueue().poll());
+        reader.getQueue().add(TEST);
+        Assert.assertEquals(TEST, reader.getQueue().poll());
     }
 
     @Test
     public void getQueue() {
-        Assert.assertEquals("getter", Queue.class, reader.getQueue());
+        Assert.assertEquals(queue, reader.getQueue());
     }
 
     @Test
     public void setQueue() {
-        Queue<String> queue = new LinkedBlockingDeque<>();
+        queue = new LinkedBlockingDeque<>();
         reader.setQueue(queue);
-        Assert.assertEquals("setter", queue, reader.getQueue());
+        Assert.assertEquals(queue, reader.getQueue());
     }
 
     @Test
-    public void findSentenceWithEmptySet() {
+    public void findSentenceNegativeTest() {
         String sentence = "123";
         String[] strings = {"карл", "у", "клары", "украл", "кораллы"};
-        Assert.assertFalse("проверка на входжение : нет сравнений", reader.findSentence(sentence, strings));
+        Assert.assertFalse(reader.findSentence(sentence, strings));
     }
 
     @Test
-    public void findSentence() {
+    public void findSentencePositiveTest() {
         String sentence = "1 7 9";
         String[] strings = {"1", "2", "3", "4", "5"};
-        Assert.assertTrue("проверка на входжение : пересечение", reader.findSentence(sentence, strings));
+        Assert.assertTrue(reader.findSentence(sentence, strings));
     }
 
     @Test (expected = NullPointerException.class)
@@ -121,16 +101,16 @@ public class SReaderTest {
     }
 
     @Test
-    public void parseNormalSentence() {
+    public void parseSentencePositiveTest() {
         String sentence = "Карл у Клары украл кораллы";
         String[] strings = {"карл", "у", "клары", "украл", "кораллы"};
         Assert.assertArrayEquals("парсим предложение", strings, reader.parseSentence(sentence));
     }
 
     @Test
-    public void parseNormalEnglishSentence() {
+    public void parseEnglishSentencePositiveTest() {
         String sentence = "SoMe Is, We.OOooO";
-        String[] strings = {"some", "is", "weooooo"};
+        String[] strings = {"singleton", "is", "weooooo"};
         Assert.assertArrayEquals("парсим предложение на английском", strings, reader.parseSentence(sentence));
     }
 

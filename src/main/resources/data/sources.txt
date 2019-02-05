@@ -1,0 +1,4 @@
+./src/main/resources/data/in.txt
+./src/main/resources/data/in2.txt
+./src/main/resources/data/in3.txt
+./src/main/resources/data/in4.txt
