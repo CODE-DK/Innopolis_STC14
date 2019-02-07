@@ -57,16 +57,11 @@ public class MathBox<T extends Number> extends ObjectBox {
 
     @Override
     public boolean addObject(Object o) {
-        try {
-            if (o instanceof Number) {
-                return super.addObject(o);
-            } else {
-                throw new ClassCastException("Could not cast <Object> to <Number>");
-            }
-        } catch (ClassCastException e) {
-            System.out.println("В ObjectBox методе addObject : " + e);
+        if (o instanceof Number) {
+            return super.addObject(o);
+        } else {
+            throw new ClassCastException("Could not cast <Object> to <Number>");
         }
-        return false;
     }
 
     /**
@@ -101,7 +96,7 @@ public class MathBox<T extends Number> extends ObjectBox {
     @Override
     public String toString() {
         return super.toString().replaceAll
-                ("ObjectBox", "MathBox");
+                (this.getClass().getSuperclass().getSimpleName(), this.getClass().getSimpleName());
     }
 
     /**
