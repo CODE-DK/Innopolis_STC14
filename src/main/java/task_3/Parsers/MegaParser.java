@@ -17,13 +17,4 @@ public interface MegaParser {
      */
     String[] parse(String url) throws IOException;
 
-    /**
-     * метод для получения строкового представления html страницы
-     * по url ссылке
-     *
-     * @param url входная строка, должна содержать url ссылку
-     * @return  строку прочитанной по url html страницы
-     * @throws IOException если чтение не удалось или переданая строка не являлется ссылкой
-     */
-    String getHtml(String url) throws IOException;
 }

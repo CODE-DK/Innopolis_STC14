@@ -29,6 +29,9 @@ class MegaTextBuilder {
      * @param words массив слов тип {@link java.lang.String}
      */
     MegaTextBuilder(String[] words, int probability) {
+        if (probability > 100 || probability < 0) {
+            throw new IllegalArgumentException("вероятнось можеть быть в диапазоне 0 - 100");
+        }
         this.megaStringBuilder = new MegaStringBuilder(words, probability);
         random = new Random();
     }

@@ -70,16 +70,16 @@ public class MegaUrlWordsParser implements MegaParser {
      *
      * @param url ссылка
      * @return массив в случае успешного парсинга
-     * @throws IOException
+     * @throws IOException прокидывается из getHtml метода
      */
     @Override
     public String[] parse(String url) throws IOException {
-
         String html = getHtml(url);
         doParse(html);
-
-        if (wordbook != null) return toArray(wordbook);
-        return null;
+        if (wordbook != null){
+            return toArray(wordbook);
+        }
+        return new String[0];
     }
 
     /**
@@ -91,8 +91,8 @@ public class MegaUrlWordsParser implements MegaParser {
      * @throws IOException если парсинг страницы не получился.
      *                     Исключение генерирует внутренний метод библиотеки
      */
-    @Override
-    public String getHtml(String url) throws IOException {
+
+    private String getHtml(String url) throws IOException {
 
         Document doc = Jsoup.connect(url).get(); // библиотека JSOUP является сторонней библиотекой, распрастраняется в свободном доступе и упрощает работу с html страницами
         return doc.html();

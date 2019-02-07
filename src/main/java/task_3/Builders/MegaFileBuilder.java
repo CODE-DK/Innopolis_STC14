@@ -26,6 +26,10 @@ public class MegaFileBuilder {
      */
     public void getFiles(String pathToDir, int numberOfFiles, int sizeInKiloByte, String[] words, int probability) {
 
+        if (probability > 100 || probability < 0) {
+            throw new IllegalArgumentException("вероятнось можеть быть в диапазоне 0 - 100");
+        }
+
         MegaTextBuilder mtb = new MegaTextBuilder(words, probability);
 
         /*
@@ -56,8 +60,11 @@ public class MegaFileBuilder {
                             local -= s.length(); // вычитаем размер строки из оставшегося места в файле
                         } else break;
                     }
+                } catch (FileNotFoundException e) {
+                    System.out.println("неверный путь к файлам = " + e);
+                    throw new RuntimeException(e);
                 } catch (IOException e) {
-                    System.out.println("Ошибка при чтении файла = " + e);
+                    System.out.println("запись в файл не возможна = " + e);
                 }
             }
         }

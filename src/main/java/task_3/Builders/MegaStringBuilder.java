@@ -24,6 +24,9 @@ class MegaStringBuilder {
     private int probability;
 
     MegaStringBuilder(String[] words, int probability) {
+        if (probability > 100 || probability < 0) {
+            throw new IllegalArgumentException("вероятнось можеть быть в диапазоне 0 - 100");
+        }
         this.words = words;
         this.probability = probability;
         random = new Random();

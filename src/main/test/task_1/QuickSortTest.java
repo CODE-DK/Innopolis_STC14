@@ -13,7 +13,7 @@ public class QuickSortTest {
     private QuickSort quickSort;
 
     @Before
-    public void init() {
+    public void setUp() {
         quickSort = new QuickSort();
     }
 
