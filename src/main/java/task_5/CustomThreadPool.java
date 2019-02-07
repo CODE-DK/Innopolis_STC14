@@ -6,7 +6,12 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
- * Простой кастомный тред пул
+ * класс реализует пул потоков выполнения,
+ * управляет жизненным циклом потоков,
+ * использует внутренний класс - исполнитель
+ *
+ * @author Комовский Дмитрий
+ * @version v1.0
  */
 class CustomThreadPool {
 
@@ -14,11 +19,8 @@ class CustomThreadPool {
     private final List<Thread> threads;
     private boolean isShutDown;
 
-    /**
-     * @param size число потоков в пуле
-     */
-
     CustomThreadPool(int size) {
+
         this.tasks = new LinkedBlockingDeque<>();
         this.threads = new ArrayList<>(size);
         this.isShutDown = false;
@@ -30,23 +32,41 @@ class CustomThreadPool {
         }
     }
 
+    /**
+     * @return метод возвращает текущее количество
+     * задач, добавленых в пул
+     */
     BlockingQueue<Runnable> getTasks() {
         return tasks;
     }
 
+    /**
+     * @return метод возвращает текущее количество
+     * работающих потоков исполнения
+     */
     int numberOfALiveThreads() {
         return threads.size();
     }
 
+    /**
+     * флаг закрытия пула,
+     * все задачи добавленые в пул до вызова метода будут выполнены
+     * новые задачи более не доступны для добавления
+     *
+     * @return true тогда и только тогда
+     * когда ранее был вызван метод shutdown()
+     */
     boolean isShutDown() {
         return isShutDown;
     }
 
     /**
-     * Добавляет задачу в очередь пула
+     * Добавляет задачу в очередь пула потоков
+     * если пул закрыт для добавления (ранее был вызван метод shutdown())
+     * метод выбрасывает ошибку о том, что пул более не доступен для добавления задач
      *
-     * @param task задача на выполнение
-     * @throws InterruptedException
+     * @param task новая задача для выполнения
+     * @throws InterruptedException если пул закрыт для новых задач
      */
     void submit(Runnable task) throws InterruptedException {
         if (!this.isShutDown) {
@@ -57,30 +77,28 @@ class CustomThreadPool {
     }
 
     /**
-     * Выключение тред пула. Пул не принимает новые задачи, но те, что уже есть в очереди
+     * Закрытие пула. Пул не принимает новые задачи, но те,
+     * что уже есть в очереди будут выполнены
      */
     void shutdown() {
         isShutDown = true;
     }
 
     /**
-     * Воркер - тред выполняющий задачи из очереди
+     * внутренний класс выполняющий задачи из очереди
+     * берет задачу из списка имеющихся в пуле и выполняет ее
      */
     private class Executor extends Thread {
 
         private final CustomThreadPool pool;
 
-        /**
-         * Конструктор, привязывает поток к пулу.
-         *
-         * @param pool тред пул
-         */
         private Executor(CustomThreadPool pool) {
             this.pool = pool;
         }
 
         /**
-         * Пока пул не выключен, получает задачи из очереди и выполняет их.
+         * пока есть задачи в очереди и пул не закрыт
+         * метод выполняет задачи из очереди
          */
         @Override
         public void run() {
