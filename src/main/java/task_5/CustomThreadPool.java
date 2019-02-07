@@ -25,7 +25,6 @@ class CustomThreadPool {
 
         for (int i = 0; i < size; i++) {
             Executor executor = new Executor(this);
-            executor.setName("Worker " + i);
             executor.start();
             threads.add(executor);
         }
@@ -35,8 +34,8 @@ class CustomThreadPool {
         return tasks;
     }
 
-    List<Thread> getThreads() {
-        return threads;
+    int numberOfALiveThreads() {
+        return threads.size();
     }
 
     boolean isShutDown() {
@@ -64,4 +63,33 @@ class CustomThreadPool {
         isShutDown = true;
     }
 
+    /**
+     * Воркер - тред выполняющий задачи из очереди
+     */
+    private class Executor extends Thread {
+
+        private final CustomThreadPool pool;
+
+        /**
+         * Конструктор, привязывает поток к пулу.
+         *
+         * @param pool тред пул
+         */
+        private Executor(CustomThreadPool pool) {
+            this.pool = pool;
+        }
+
+        /**
+         * Пока пул не выключен, получает задачи из очереди и выполняет их.
+         */
+        @Override
+        public void run() {
+            while (!pool.isShutDown() || !this.pool.getTasks().isEmpty()) {
+                Runnable task;
+                while ((task = this.pool.getTasks().poll()) != null) {
+                    task.run();
+                }
+            }
+        }
+    }
 }
