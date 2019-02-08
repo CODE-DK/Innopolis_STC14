@@ -7,7 +7,12 @@
     <groupId>com.stc14</groupId>
     <artifactId>com.stc14</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <build>
+        <directory>target</directory>
+        <outputDirectory>target</outputDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/main/test</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
