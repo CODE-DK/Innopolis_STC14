@@ -51,14 +51,14 @@ public class SubjectDAOimpl extends AbstractDAO implements SubjectDAO {
             PreparedStatement statement = connection.prepareStatement(CREATE);
             statement.setString(1, subject.getDescription());
             ResultSet set = statement.executeQuery();
-            LOGGER.debug(MessageFormat.format
+            LOGGER.debug(String.format
                     (
                             "create query have done successfully with %s params", subject.getDescription()
                     ));
             if (set.next()) {
                 subject.setId(set.getInt(SUBJECT_ID));
             }
-            LOGGER.debug(MessageFormat.format("returns id = %s", subject.getId()));
+            LOGGER.debug(String.format("returns id = %s", subject.getId()));
             connection.commit();
         } catch (SQLException e) {
             easyRollBack(connection);
@@ -84,7 +84,7 @@ public class SubjectDAOimpl extends AbstractDAO implements SubjectDAO {
                 subject.setId(set.getInt(SUBJECT_ID));
                 subject.setDescription(set.getString(SUBJECT_DESC));
             }
-            LOGGER.debug(MessageFormat.format
+            LOGGER.debug(String.format
                     (
                             "select query reading have done successfully with %s %s params"
                             , subject.getId(), subject.getDescription()
@@ -111,7 +111,7 @@ public class SubjectDAOimpl extends AbstractDAO implements SubjectDAO {
             statement.setString(1, subject.getDescription());
             statement.setInt(2, subject.getId());
             statement.executeUpdate();
-            LOGGER.debug(MessageFormat.format
+            LOGGER.debug(String.format
                     (
                             "update query have done successfully with %s %s params"
                             , subject.getId(), subject.getDescription()

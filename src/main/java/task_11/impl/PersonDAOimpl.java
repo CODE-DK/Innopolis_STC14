@@ -57,7 +57,7 @@ public class PersonDAOimpl extends AbstractDAO implements PersonDAO {
             statement.setString(1, person.getName());
             statement.setTimestamp(2, new Timestamp(person.getBirthDate()));
             ResultSet set = statement.executeQuery();
-            LOGGER.debug(MessageFormat.format
+            LOGGER.debug(String.format
                     (
                             "create query have done successfully with %s %s params"
                             , person.getName(), person.getBirthDate()
@@ -65,7 +65,7 @@ public class PersonDAOimpl extends AbstractDAO implements PersonDAO {
             if (set.next()) {
                 person.setId(set.getInt(PERSON_ID));
             }
-            LOGGER.debug(MessageFormat.format("returns id = %s", person.getId()));
+            LOGGER.debug(String.format("returns id = %s", person.getId()));
             connection.commit();
         } catch (SQLException e) {
             easyRollBack(connection);
@@ -92,7 +92,7 @@ public class PersonDAOimpl extends AbstractDAO implements PersonDAO {
                 person.setName(set.getString(PERSON_NAME));
                 person.setBirthDate(set.getDate(PERSON_DATE).getTime());
             }
-            LOGGER.debug(MessageFormat.format
+            LOGGER.debug(String.format
                     (
                             "select query reading have done successfully with %s %s %s params",
                             person.getId(), person.getName(), person.getBirthDate()
@@ -120,7 +120,7 @@ public class PersonDAOimpl extends AbstractDAO implements PersonDAO {
             statement.setTimestamp(2, new Timestamp(person.getBirthDate()));
             statement.setInt(3, person.getId());
             statement.executeUpdate();
-            LOGGER.debug(MessageFormat.format
+            LOGGER.debug(String.format
                     (
                             "update query reading have done successfully with %s %s %s params"
                             , person.getId(), person.getName(), person.getBirthDate()
