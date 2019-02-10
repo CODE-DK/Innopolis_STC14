@@ -5,6 +5,7 @@ import task_11.dao.PersonDAO;
 import task_11.entity.Person;
 
 import java.sql.*;
+import java.text.MessageFormat;
 
 /**
  * класс реализует логику Data Access Object реализуя PersonDAO
@@ -15,9 +16,6 @@ import java.sql.*;
  */
 public class PersonDAOimpl extends AbstractDAO implements PersonDAO {
 
-    /**
-     * класс поддерживает логгирование в выходной файл в директории log
-     */
     private static final Logger LOGGER = Logger.getLogger(PersonDAOimpl.class);
 
     /**
@@ -59,17 +57,18 @@ public class PersonDAOimpl extends AbstractDAO implements PersonDAO {
             statement.setString(1, person.getName());
             statement.setTimestamp(2, new Timestamp(person.getBirthDate()));
             ResultSet set = statement.executeQuery();
-            LOGGER.debug("create query have done successfully with "
-                    + person.getName() + " " + person.getBirthDate() + " params");
+            LOGGER.debug(MessageFormat.format
+                    (
+                            "create query have done successfully with %s %s params"
+                            , person.getName(), person.getBirthDate()
+                    ));
             if (set.next()) {
                 person.setId(set.getInt(PERSON_ID));
             }
-            LOGGER.debug("returns id " + person.getId());
+            LOGGER.debug(MessageFormat.format("returns id = %s", person.getId()));
             connection.commit();
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, create block stop with " + e);
         }
     }
 
@@ -93,16 +92,17 @@ public class PersonDAOimpl extends AbstractDAO implements PersonDAO {
                 person.setName(set.getString(PERSON_NAME));
                 person.setBirthDate(set.getDate(PERSON_DATE).getTime());
             }
-            LOGGER.debug("select query reading have done successfully with "
-                    + person.getId() + " " + person.getName() + " " + person.getBirthDate() + " params");
+            LOGGER.debug(MessageFormat.format
+                    (
+                            "select query reading have done successfully with %s %s %s params",
+                            person.getId(), person.getName(), person.getBirthDate()
+                    ));
             connection.commit();
             return person;
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, select block stop with " + e);
         }
-        return null;
+        return person;
     }
 
     /**
@@ -120,13 +120,14 @@ public class PersonDAOimpl extends AbstractDAO implements PersonDAO {
             statement.setTimestamp(2, new Timestamp(person.getBirthDate()));
             statement.setInt(3, person.getId());
             statement.executeUpdate();
-            LOGGER.debug("update query reading have done successfully with "
-                    + person.getId() + " " + person.getName() + " " + person.getBirthDate() + " params");
+            LOGGER.debug(MessageFormat.format
+                    (
+                            "update query reading have done successfully with %s %s %s params"
+                            , person.getId(), person.getName(), person.getBirthDate()
+                    ));
             connection.commit();
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, update block stop with " + e);
         }
     }
 

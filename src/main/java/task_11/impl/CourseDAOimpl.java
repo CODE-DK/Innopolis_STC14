@@ -22,9 +22,6 @@ import java.util.List;
  */
 public class CourseDAOimpl extends AbstractDAO implements CourseDAO {
 
-    /**
-     * класс поддерживает логгирование в выходной файл в директории log
-     */
     private static final Logger LOGGER = Logger.getLogger(CourseDAOimpl.class);
 
     /**
@@ -86,9 +83,7 @@ public class CourseDAOimpl extends AbstractDAO implements CourseDAO {
             connection.commit();
             LOGGER.info("commit");
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, create block stop with " + e);
         }
         return result;
     }
@@ -118,9 +113,7 @@ public class CourseDAOimpl extends AbstractDAO implements CourseDAO {
             connection.commit();
             LOGGER.info("commit");
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, create block stop with " + e);
         }
         return result;
     }
@@ -144,9 +137,7 @@ public class CourseDAOimpl extends AbstractDAO implements CourseDAO {
             connection.commit();
             LOGGER.info("create query have done successfully");
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, create block stop with " + e);
         }
     }
 
@@ -169,9 +160,7 @@ public class CourseDAOimpl extends AbstractDAO implements CourseDAO {
             connection.commit();
             LOGGER.info("create query have done successfully");
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, create block stop with " + e);
         }
     }
 

@@ -1,0 +1,11 @@
+task_11.entity.Person
+1) Я достаточно отрицательно отношусь к инициализации объекта через сеттеры
+
+task_9.SolutionTest
+1) Где?
+
+task_9.IO.SReaderTest
+1) assertEquals("несуществующий путь", BufferedReader.class, reader.initReader(TEST)); - сравнение .class с BufferedReader?
+2) parseEnglishSentencePositiveTest - тест не пройден
+3) queue = new ConcurrentLinkedQueue<>();
+queue = new LinkedBlockingDeque<>(); - одно поле инициализируешь разными объектами?

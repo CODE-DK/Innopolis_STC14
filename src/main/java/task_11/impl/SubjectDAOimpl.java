@@ -8,12 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 
 public class SubjectDAOimpl extends AbstractDAO implements SubjectDAO {
 
-    /**
-     * класс поддерживает логгирование в выходной файл в директории log
-     */
     private static final Logger LOGGER = Logger.getLogger(SubjectDAOimpl.class);
 
     /**
@@ -53,16 +51,17 @@ public class SubjectDAOimpl extends AbstractDAO implements SubjectDAO {
             PreparedStatement statement = connection.prepareStatement(CREATE);
             statement.setString(1, subject.getDescription());
             ResultSet set = statement.executeQuery();
-            LOGGER.debug("create query have done successfully with " + subject.getDescription() + " params");
+            LOGGER.debug(MessageFormat.format
+                    (
+                            "create query have done successfully with %s params", subject.getDescription()
+                    ));
             if (set.next()) {
                 subject.setId(set.getInt(SUBJECT_ID));
             }
-            LOGGER.debug("returns id " + subject.getId());
+            LOGGER.debug(MessageFormat.format("returns id = %s", subject.getId()));
             connection.commit();
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, create block stop with " + e);
         }
     }
 
@@ -85,16 +84,17 @@ public class SubjectDAOimpl extends AbstractDAO implements SubjectDAO {
                 subject.setId(set.getInt(SUBJECT_ID));
                 subject.setDescription(set.getString(SUBJECT_DESC));
             }
-            LOGGER.debug("select query reading have done successfully with "
-                    + subject.getId() + " " + subject.getDescription() + " params");
+            LOGGER.debug(MessageFormat.format
+                    (
+                            "select query reading have done successfully with %s %s params"
+                            , subject.getId(), subject.getDescription()
+                    ));
             connection.commit();
             return subject;
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, select block stop with " + e);
         }
-        return null;
+        return subject;
     }
 
     /**
@@ -111,13 +111,14 @@ public class SubjectDAOimpl extends AbstractDAO implements SubjectDAO {
             statement.setString(1, subject.getDescription());
             statement.setInt(2, subject.getId());
             statement.executeUpdate();
-            LOGGER.debug("update query have done successfully with "
-                    + subject.getId() + " " + subject.getDescription() + " params");
+            LOGGER.debug(MessageFormat.format
+                    (
+                            "update query have done successfully with %s %s params"
+                            , subject.getId(), subject.getDescription()
+                    ));
             connection.commit();
         } catch (SQLException e) {
-            LOGGER.error("Error : " + e + " --try to make a rollback");
             easyRollBack(connection);
-            LOGGER.error("rollback have done successfully, update block stop with " + e);
         }
     }
 
