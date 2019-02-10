@@ -14,8 +14,6 @@ public class CustomThreadPoolTest {
     private CustomThreadPool pool;
     private final String EMPTY = "";
 
-
-
     @Before
     public void setUp() {
         pool = new CustomThreadPool(5);
