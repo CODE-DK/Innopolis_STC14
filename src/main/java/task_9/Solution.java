@@ -59,15 +59,13 @@ public class Solution implements Occurrences {
 
     private void initWriter(String res, Queue<String> queue, ExecutorService ex) {
         try {
-            FileWriter fw = new FileWriter(res);
-            Thread writer = new SWriter(fw, queue);
+            Thread writer = new SWriter(res, queue);
             writer.start();
             waitAllThreads(ex);
             writer.interrupt();
         } catch (IOException e) {
             LOGGER.debug("Ошибка при записи в файл ", e);
         }
-
     }
 
     private void startThreadPool(String[] sources, String[] words, Queue<String> queue, ExecutorService ex) {

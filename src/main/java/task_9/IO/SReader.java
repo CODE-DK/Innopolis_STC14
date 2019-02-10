@@ -1,12 +1,11 @@
 package task_9.IO;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,10 +26,11 @@ public class SReader extends Thread {
     private static final String REG_EX = "[A-ZА-Я].+?[.|!|?]";
     private static final String PUNCTUATIONS = "[^a-zA-Zа-яА-Я\\d\\s]";
     private static final String SPACE = "\\s+";
+    private static final String EMPTY = "";
 
     private final String[] words;
     private final String file;
-    private Queue<String> queue;
+    private final Queue<String> queue;
 
     public SReader(String file, String[] words, Queue<String> queue) {
         this.words = words;
@@ -38,51 +38,50 @@ public class SReader extends Thread {
         this.queue = queue;
     }
 
-     Queue<String> getQueue() {
-        return queue;
-    }
-
-     void setQueue(Queue<String> queue) {
-        this.queue = queue;
-    }
-
     /**
      * по переданой строке инициализируем поле {@code reader}
      *
-     * @param file строка - путь к файлу либо url
-     * @throws FileNotFoundException если файл не существует или доступ к ссылке закрыт
+     * @throws IOException если файл не существует или доступ к ссылке закрыт
      */
-     BufferedReader initReader(String file) throws FileNotFoundException {
+
+    private InputStream getStream() throws IOException {
+        LOGGER.debug("открытие стрима по ссылке");
         try {
-            URL url = new URL(file);
-            return new BufferedReader(new InputStreamReader(url.openStream()));
-        } catch (Exception e) {
-            return new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            return new URL(file).openStream();
+        } catch (MalformedURLException e) {
+            return FileUtils.openInputStream(new File(file));
         }
     }
 
     /**
      * метод читает файл по по строкам в буффер
      */
-     void parseText(BufferedReader reader) {
+    private void parseText() throws IOException {
         final StringBuilder builder = new StringBuilder();
-        reader.lines()
-                .map(builder::append)
-                .forEach(this::findRegEx);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(getStream()))) {
+            LOGGER.debug("начало парсинга");
+            reader.lines()
+                    .map(builder::append)
+                    .forEach(this::findRegEx);
+        } finally {
+            LOGGER.debug("парсинг закончен");
+        }
     }
 
     /**
      * метод сравнивает переданною строку на наличие в нем оконченного предложения
      * и если находит, удаляет его из буффера
      */
-     void findRegEx(StringBuilder builder) {
+    private void findRegEx(StringBuilder builder) {
         final Matcher matcher = Pattern.compile(REG_EX).matcher(builder.toString());
         while (matcher.find()) {
             String result = matcher.group();
-            if (findSentence(result, words)){
+            LOGGER.debug("найдено совпадение {}", result);
+            if (findSentence(result, words)) {
                 addToQueue(result);
             }
             builder.delete(0, result.length());
+            LOGGER.debug("в буффере осталось {}", builder);
         }
     }
 
@@ -92,11 +91,11 @@ public class SReader extends Thread {
      *
      * @param string строка по которой осуществляется поиск
      */
-     boolean findSentence(String string, String[] words) {
+    private boolean findSentence(String string, String[] words) {
         return !Collections.disjoint(Arrays.asList(words), Arrays.asList(parseSentence(string)));
     }
 
-     void addToQueue(String sentence){
+    private void addToQueue(String sentence) {
         queue.add(sentence);
     }
 
@@ -107,7 +106,7 @@ public class SReader extends Thread {
      * @param sentence входная строка - предложение
      * @return множество слов из строки
      */
-     String[] parseSentence(String sentence) {
+    private String[] parseSentence(String sentence) {
         return removePunctuation(sentence.toLowerCase()).split(SPACE);
     }
 
@@ -117,16 +116,17 @@ public class SReader extends Thread {
      * @param string входная строка - предложение
      * @return строка без знаков пунктуации
      */
-     String removePunctuation(String string) {
-        return string.replaceAll(PUNCTUATIONS, "");
+    private String removePunctuation(String string) {
+        return string.replaceAll(PUNCTUATIONS, EMPTY);
     }
 
     @Override
     public void run() {
         try {
-            parseText(initReader(file));
-        } catch (FileNotFoundException e) {
-            LOGGER.debug("Ошибка доступа к файлу в потоке чтения = {}", e);
+            parseText();
+        } catch (IOException e) {
+            LOGGER.error("ошибка ввода вывода в run()", e);
+            throw new RuntimeException(e);
         }
     }
 }

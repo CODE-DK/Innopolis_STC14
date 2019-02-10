@@ -30,7 +30,7 @@ class LoaderImpl implements Loader {
             List<String> array = Files.readAllLines(Paths.get(SOURCES));
             return array.toArray(new String[0]);
         } catch (IOException e) {
-            LOGGER.info("Ошибка при чтении файла ресурсов - ", e);
+            LOGGER.info("Ошибка при чтении файла ресурсов", e);
             return new String[0];
         }
     }
@@ -41,7 +41,7 @@ class LoaderImpl implements Loader {
             List<String> array = Files.readAllLines(Paths.get(WORDS));
             return array.toArray(new String[0]);
         } catch (IOException e) {
-            LOGGER.info("Ошибка при чтении массива слов - ", e);
+            LOGGER.info("Ошибка при чтении массива слов", e);
             return new String[0];
         }
     }

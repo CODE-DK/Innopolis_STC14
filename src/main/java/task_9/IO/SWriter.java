@@ -21,8 +21,8 @@ public class SWriter extends Thread {
     private FileWriter writerToFile;
     private Queue<String> queue;
 
-    public SWriter(FileWriter fileWriter, Queue<String> queue) {
-        this.writerToFile = fileWriter;
+    public SWriter(String path, Queue<String> queue) throws IOException {
+        this.writerToFile = new FileWriter(path);
         this.queue = queue;
     }
 
@@ -30,33 +30,31 @@ public class SWriter extends Thread {
      * метод для записи в файл
      * принимает на вход строку и пишет ее в файл
      */
-    private void writeStringToFile() {
+    private void writeStringToFile() throws IOException {
+        LOGGER.debug("начали запись");
         while (!isInterrupted()) {
+            LOGGER.debug("пока не прерваны");
             if (!queue.isEmpty()) {
+                LOGGER.debug("очередь не пустая");
                 try {
+                    LOGGER.debug("пишим в файл");
                     writerToFile.write(queue.poll() + "\n");
                     writerToFile.flush();
                 } catch (IOException e) {
                     LOGGER.debug("Ошибка записи в файл", e);
                 }
-            }
-        }
-        close();
-    }
-
-    /**
-     * закрытие потока для чтения
-     */
-    void close() {
-        try {
-            writerToFile.close();
-        } catch (IOException e) {
-            LOGGER.debug("Ошибка при закрытии потока для записи = {}", e);
-        }
+            }LOGGER.debug("очередь пустая");
+        }LOGGER.debug("закрываем поток на запись");
+        writerToFile.close();
     }
 
     @Override
     public void run() {
-        writeStringToFile();
+        try {
+            writeStringToFile();
+        } catch (IOException e) {
+            LOGGER.debug("Ошибка при закрытии потока для записи", e);
+            throw new RuntimeException(e);
+        }
     }
 }

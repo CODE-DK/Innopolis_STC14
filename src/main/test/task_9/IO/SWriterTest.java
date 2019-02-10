@@ -1,65 +1,51 @@
 package task_9.IO;
 
-import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.junit.rules.TemporaryFolder;
 
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Queue;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
-import static org.mockito.Matchers.anyString;
+import static org.junit.Assert.assertEquals;
 
 public class SWriterTest {
 
+    private static final String EMPTY = "";
     private SWriter writer;
-    private FileWriter fileWriter;
     private Queue<String> queue;
+    private File file;
+
+    @Rule
+    public TemporaryFolder testFolder = new TemporaryFolder();
 
     @Before
-    public void init(){
-        fileWriter = Mockito.mock(FileWriter.class);
-        queue = new LinkedBlockingDeque<>();
-        writer = new SWriter(fileWriter, queue);
+    public void setUp() throws IOException {
+        queue = new LinkedBlockingQueue<>();
+        file = testFolder.newFile("test.txt");
+        writer = new SWriter(file.getAbsolutePath(), queue);
     }
 
     @Test
     public void runTest() throws IOException {
-        queue.add("test");
+        queue.add("one");
+        queue.add("two");
+        queue.add("three");
+        String buffer = queue.toString();
         writer.start();
-        Mockito.verify(fileWriter, Mockito.times(1)).write(anyString());
-        Mockito.verify(fileWriter, Mockito.times(1)).flush();
+        if (queue.isEmpty()){
+            writer.interrupt();
+        }
+        String result = Files.readAllLines(file.toPath()).toString();
+        assertEquals(buffer, result);
     }
 
-    @Test
-    public void interruptTest() throws IOException {
-        queue.add("test");
-        writer.start();
-        writer.interrupt();
-        Mockito.verify(fileWriter, Mockito.times(1)).close();
-    }
-
-    @Test
-    public void writeStringToFileNegativeTest() throws IOException {
-        fileWriter = Mockito.mock(FileWriter.class);
-        queue = new LinkedBlockingDeque<>();
-        writer = new SWriter(fileWriter, queue);
-        queue.add("test");
-        writer.start();
-        Mockito.doThrow(IOException.class);
-    }
-
-    @Test
-    public void closePositiveTest() throws IOException {
-        writer.close();
-        Mockito.verify(fileWriter, Mockito.times(1)).close();
-    }
-
-    @Test
-    public void closeNegativeTest() {
-        writer.close();
-        Mockito.doThrow(IOException.class);
+    @Test (expected = IOException.class)
+    public void wrongPathToFile() throws IOException {
+        new SWriter(EMPTY, queue);
     }
 }
