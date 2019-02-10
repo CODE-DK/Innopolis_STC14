@@ -10,6 +10,9 @@ import java.lang.annotation.Target;
  * для его дальнейшей сериализации и десериализации
  * классами {@link XmlInputStream} {@link XmlOutputStream}
  * аннотация допустима только для классов
+ *
+ * @author Комовский Дмитрий
+ * @version v1.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

@@ -30,12 +30,14 @@ class XmlOutputStream {
     private String readObject(Object o) throws IllegalAccessException {
 
         if (!o.getClass().isAnnotationPresent(XmlSerialize.class)) {
-            System.out.println("невозможно сериализовать данный объект");
-            return null;
+            throw new UnserializableClassException("невозможно сериализовать данный объект");
         }
         begin(o.getClass().getName(), null, null);
         Field[] fields = o.getClass().getDeclaredFields();
         for (Field field : fields) {
+            if (field.isAnnotationPresent(XmlTransient.class)){
+                continue;
+            }
             addLine(o, field);
         }
         end(o);
