@@ -36,7 +36,7 @@
                     <check />
                 </configuration>
             </plugin>
-            
+
         </plugins>
     </build>
 
@@ -130,6 +130,13 @@
             <version>${powermock.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
 
     </dependencies>
 
