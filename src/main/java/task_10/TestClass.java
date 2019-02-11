@@ -3,15 +3,11 @@ package task_10;
 import java.util.ArrayList;
 
 public class TestClass {
-    public static void main(String[] args) {
-        javaHeapSpace();
-    }
-
     /**
      *  метод завершиться с ошибкой
      *  OutOfMemoryError c пометкой Java Heap Space.
      */
-    private static void javaHeapSpace() {
+    public void javaHeapSpace() {
         ArrayList<String> anyArray = new ArrayList<>();
         StringBuilder builder = new StringBuilder();
 
@@ -19,6 +15,4 @@ public class TestClass {
             anyArray.add(builder.append(i).toString());
         }
     }
-
-
 }

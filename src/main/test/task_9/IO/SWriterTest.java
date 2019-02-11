@@ -31,15 +31,16 @@ public class SWriterTest {
     }
 
     @Test
-    public void runTest() throws IOException {
+    public void runTest() throws IOException, InterruptedException {
         queue.add("one");
         queue.add("two");
         queue.add("three");
         String buffer = queue.toString();
         writer.start();
-        if (queue.isEmpty()){
-            writer.interrupt();
+        while (!queue.isEmpty()){
+            continue;
         }
+        writer.interrupt();
         String result = Files.readAllLines(file.toPath()).toString();
         assertEquals(buffer, result);
     }
